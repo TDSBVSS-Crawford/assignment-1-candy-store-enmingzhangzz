@@ -14,7 +14,7 @@ public class CandyStore {
         }
         scanner.close();
         System.out.println("The total price before adding Tax is " + price + "\n");
-        System.out.println("The total price after Tax is " + price * 1.13);
+        System.out.println("The total price after adding Tax is " + price * 1.13);
     } 
 
     public static String candyChoices() {
