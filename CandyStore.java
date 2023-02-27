@@ -1,16 +1,39 @@
+import java.util.Scanner;
+
 public class CandyStore {
+    static double price;
+    static Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {
-        // Main method. This method should contain most of your code.
-        
-    } //end main
+        String str = candyChoices();
+        while(!str.equals("quit")) {
+            System.out.println("please enter the quantity");
+            System.out.println(str);
+            int qty = scanner.nextInt();
+            scanner.nextLine();
+            price = price + calculateCost(str, qty);
+            str = candyChoices();
+        }
+        scanner.close();
+        System.out.println("The total price is " + price);
+    } 
 
     public static String candyChoices() {
-        // this method should print out all the candy choices and prompt the user to make a choice
-        return ""; //change this return statement to return the user's choice
+        System.out.println("You have 5 choices\n" + "a) Reese's Pieces: $2.50/0.5 kg\n" + "b) Skittles: $1.75/1 kg\n" + "c) Jubjubes: $0.50/1 kg\n" + "d) Lollipops: 1 for $0.50 or 5 for $2.00\n" + "e) Smarties: $1.50/1 kg\n");
+        String choice = scanner.nextLine();
+        System.out.println("This is the choice" + choice);
+        return choice;
     }
 
     public static double calculateCost(String choice, int qty) {
-        // this method should calculate the total cost of purchasing a type of candy
-        return 0.0;
+        double price = 0;
+        if(choice.equals("Reese Pieces")) price = 5.0 * qty;
+        else if(choice.equals("Skittles")) price = 1.75 * qty;
+        else if(choice.equals("Jubjubes")) price = 0.5 * qty;
+        else if(choice.equals("Lollipops")) {
+            int t = qty / 5; int m = qty % 5;
+            price = 5.0 * t + 1.0 * m;
+        }
+        else price = 1.5 * qty;
+        return price;
     }
-} // end class
+} 
